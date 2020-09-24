@@ -97,7 +97,7 @@ public class SystemAccountAuthenticator implements PasswordAuthenticator {
         }
 
         // 有効期限は日付単位で管理しているので、現在日時から時間を切り捨てた日付を使用する。
-        final Date sysDate = DateUtil.getDate(SystemTimeUtil.getDateString());
+        final java.sql.Date sysDate = new java.sql.Date(DateUtil.getDate(SystemTimeUtil.getDateString()).getTime());
         final SystemAccount account;
         try {
             account = UniversalDao.findBySqlFile(
