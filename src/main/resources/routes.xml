@@ -7,6 +7,8 @@
     <get  path="/action/projectUpload" to="ProjectUpload#index"/>
     <get  path="/api/clients" to="Client#find"/>
     <get  path="/api/industries" to="Industry#find"/>
+    <get  path="/api/industries/test" to="Industry#test"/>
+    <get  path="/api/child" to="Child#parentMethod"/>
     <match path="/action/:controller/:action"/>
     <match path="/action/:controller/:action/:projectId">
         <requirements>

@@ -12,7 +12,7 @@ public class CustomMeterBinderListProvider extends DefaultMeterBinderListProvide
     @Override
     protected List<MeterBinder> createMeterBinderList() {
         return Arrays.asList(
-            new TomcatMetrics(null, null)
+//            new TomcatMetrics(null, null)
         );
     }
 }

@@ -17,6 +17,16 @@
             <component class="nablarch.integration.router.RoutesMethodBinderFactory" />
         </property>
     </component>
+<!--    <component name="packageMapping"-->
+<!--               class="nablarch.fw.web.handler.HttpRequestJavaPackageMapping">-->
+<!--        <property name="basePackage" value="${nablarch.commonProperty.basePackage}" />-->
+<!--&lt;!&ndash;        <property name="routes" value="routes.xml"/>&ndash;&gt;-->
+<!--        <property name="baseUri" value="/action" />-->
+<!--&lt;!&ndash;        <property name="checkInterval" value="0"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <property name="methodBinderFactory">&ndash;&gt;-->
+<!--&lt;!&ndash;            <component class="nablarch.integration.router.RoutesMethodBinderFactory" />&ndash;&gt;-->
+<!--&lt;!&ndash;        </property>&ndash;&gt;-->
+<!--    </component>-->
 
     <!-- JAX-RS用のパッケージマッピングの設定 -->
     <component name="jaxrsPackageMapping"
