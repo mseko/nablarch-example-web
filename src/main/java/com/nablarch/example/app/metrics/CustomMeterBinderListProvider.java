@@ -1,7 +1,7 @@
 package com.nablarch.example.app.metrics;
 
+import com.nablarch.example.app.metrics.instrument.logger.NablarchLoggerMetrics;
 import io.micrometer.core.instrument.binder.MeterBinder;
-import io.micrometer.core.instrument.binder.tomcat.TomcatMetrics;
 import nablarch.integration.micrometer.DefaultMeterBinderListProvider;
 
 import java.util.Arrays;
@@ -12,6 +12,7 @@ public class CustomMeterBinderListProvider extends DefaultMeterBinderListProvide
     @Override
     protected List<MeterBinder> createMeterBinderList() {
         return Arrays.asList(
+            new NablarchLoggerMetrics()
 //            new TomcatMetrics(null, null)
         );
     }
