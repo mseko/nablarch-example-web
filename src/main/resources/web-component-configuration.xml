@@ -193,11 +193,12 @@
     </component>
 
   <component name="httpRequestMetricsHandler"
-             class="nablarch.integration.micrometer.instrument.handler.http.HttpRequestMetricsHandler">
+             class="nablarch.integration.micrometer.instrument.handler.TimerMetricsHandler">
     <property name="meterRegistry" ref="meterRegistry" />
-<!--    <property name="httpRequestMetricsTagBuilder">-->
+    <property name="handlerMetricsMetaDataBuilder">
+      <component class="nablarch.integration.micrometer.instrument.http.HttpRequestTimeMetricsMetaDataBuilder" />
 <!--      <component class="com.nablarch.example.app.metrics.CustomHttpRequestMetricsTagBuilder" />-->
-<!--    </property>-->
+    </property>
   </component>
 
 <!--    <component name="meterBinderListProvider" class="nablarch.integration.micrometer.DefaultMeterBinderListProvider" />-->
