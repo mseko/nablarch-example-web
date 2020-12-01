@@ -199,6 +199,23 @@
       <component class="nablarch.integration.micrometer.instrument.http.HttpRequestTimeMetricsMetaDataBuilder" />
 <!--      <component class="com.nablarch.example.app.metrics.CustomHttpRequestMetricsTagBuilder" />-->
     </property>
+
+    <property name="enablePercentileHistogram" value="true" />
+    <property name="serviceLevelObjectives">
+      <list>
+        <value>10000</value>
+      </list>
+    </property>
+    <property name="minimumExpectedValue" value="100" />
+    <property name="maximumExpectedValue" value="1000" />
+
+    <property name="percentiles">
+      <list>
+        <value>0.99</value>
+        <value>0.95</value>
+        <value>0.50</value>
+      </list>
+    </property>
   </component>
 
 <!--    <component name="meterBinderListProvider" class="nablarch.integration.micrometer.DefaultMeterBinderListProvider" />-->
