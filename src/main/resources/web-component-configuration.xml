@@ -264,7 +264,7 @@
 <!--    <property name="meterRegistry" ref="meterRegistry" />-->
 <!--  </component>-->
 
-  <component name="daoContextFactory" class="com.nablarch.example.app.metrics.instrument.dao.DecoratedDaoContextFactory">
+  <component name="daoContextFactory" class="nablarch.integration.micrometer.instrument.dao.SqlTimeMetricsDaoContextFactory">
     <property name="delegate">
       <component class="nablarch.common.dao.BasicDaoContextFactory">
         <property name="sequenceIdGenerator">
@@ -273,16 +273,7 @@
       </component>
     </property>
 
-    <property name="daoContextDecoratorFactoryList">
-      <list>
-        <component class="com.nablarch.example.app.metrics.instrument.dao.SqlTimeMetricsDecoratorFactory">
-          <property name="meterRegistry" ref="meterRegistry" />
-        </component>
-        <component class="com.nablarch.example.app.metrics.instrument.dao.EntityCountMetricsDecoratorFactory">
-          <property name="meterRegistry" ref="meterRegistry" />
-        </component>
-      </list>
-    </property>
+    <property name="meterRegistry" ref="meterRegistry" />
   </component>
 
 </component-configuration>
