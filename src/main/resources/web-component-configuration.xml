@@ -178,6 +178,7 @@
         <component-ref name="tokenManager"/>
         <component-ref name="packageMapping" />
         <component-ref name="jaxrsPackageMapping"/>
+        <component-ref name="meterBinderListProvider" />
       </list>
     </property>
   </component>
@@ -219,7 +220,9 @@
   </component>
 
 <!--    <component name="meterBinderListProvider" class="nablarch.integration.micrometer.DefaultMeterBinderListProvider" />-->
-  <component name="meterBinderListProvider" class="com.nablarch.example.app.metrics.CustomMeterBinderListProvider" />
+  <component name="meterBinderListProvider" class="com.nablarch.example.app.metrics.CustomMeterBinderListProvider">
+    <property name="dataSource" ref="dataSource" />
+  </component>
 
 <!--    <component name="meterRegistry" class="com.nablarch.example.app.metrics.instrument.PrometheusMeterRegistryFactory">-->
 <!--        <property name="meterBinderListProvider" ref="meterBinderListProvider" />-->
