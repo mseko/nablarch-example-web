@@ -198,25 +198,27 @@
     <property name="meterRegistry" ref="meterRegistry" />
     <property name="handlerMetricsMetaDataBuilder">
       <component class="nablarch.integration.micrometer.instrument.http.HttpRequestTimeMetricsMetaDataBuilder" />
-<!--      <component class="com.nablarch.example.app.metrics.CustomHttpRequestMetricsTagBuilder" />-->
     </property>
-
-    <property name="enablePercentileHistogram" value="true" />
-    <property name="serviceLevelObjectives">
-      <list>
-        <value>10000</value>
-      </list>
-    </property>
-    <property name="minimumExpectedValue" value="100" />
-    <property name="maximumExpectedValue" value="1000" />
 
     <property name="percentiles">
       <list>
-        <value>0.99</value>
-        <value>0.95</value>
+        <value>0.98</value>
+        <value>0.90</value>
         <value>0.50</value>
       </list>
     </property>
+
+    <property name="enablePercentileHistogram" value="true" />
+
+    <property name="serviceLevelObjectives">
+      <list>
+        <value>1000</value>
+        <value>1500</value>
+      </list>
+    </property>
+
+    <property name="minimumExpectedValue" value="500" />
+    <property name="maximumExpectedValue" value="3000" />
   </component>
 
 <!--    <component name="meterBinderListProvider" class="nablarch.integration.micrometer.DefaultMeterBinderListProvider" />-->

@@ -15,6 +15,8 @@ import nablarch.fw.web.HttpRequest;
 import nablarch.fw.web.HttpResponse;
 
 import java.util.Arrays;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class MetricsAction {
     private static final Logger LOGGER = LoggerManager.get(MetricsAction.class);
@@ -25,13 +27,24 @@ public class MetricsAction {
             stackoverflow();
         }
 
+        testPercentile();
         logCountTest(request);
-
         buildMetrics(context);
-
         testSqlProcessTime();
 
         return new HttpResponse("/WEB-INF/view/metrics/index.jsp");
+    }
+
+    private static final Random RANDOM = new Random();
+
+    private void testPercentile() {
+        int sleep = RANDOM.nextInt(1500);
+        try {
+            System.out.println("sleep: " + sleep + " ms");
+            TimeUnit.MILLISECONDS.sleep(sleep);
+        } catch (InterruptedException e) {
+            e.printStackTrace(System.err);
+        }
     }
 
     private void testSqlProcessTime() {
