@@ -18,8 +18,9 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
     <!-- gsp-dba-maven-pluginが使用するデータベース設定 -->
-    <db.adminUser>SAMPLE</db.adminUser>
-    <db.user>NABLARCH_EXAMPLE</db.user>
+    <db.adminUser>postgres</db.adminUser>
+    <db.adminPassword>password</db.adminPassword>
+    <db.user>nablarch_example</db.user>
 
     <webxml.path>src/main/webapp/WEB-INF/web.xml</webxml.path>
   </properties>
@@ -149,9 +150,9 @@
     </dependency>
     
     <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <version>1.4.196</version>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>42.2.6.jre6</version>
       <scope>runtime</scope>
     </dependency>
     
@@ -216,6 +217,7 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- for java 11-->
     <dependency>
       <groupId>com.jayway.jsonpath</groupId>
       <artifactId>json-path-assert</artifactId>
@@ -228,7 +230,32 @@
       <version>1.5.0</version>
       <scope>test</scope>
     </dependency>
-
+    <dependency>
+      <groupId>com.sun.activation</groupId>
+      <artifactId>javax.activation</artifactId>
+      <version>1.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.xml.bind</groupId>
+      <artifactId>jaxb-api</artifactId>
+      <version>2.3.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.xml.bind</groupId>
+      <artifactId>jaxb-core</artifactId>
+      <version>2.3.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.xml.bind</groupId>
+      <artifactId>jaxb-impl</artifactId>
+      <version>2.3.0</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.annotation</groupId>
+      <artifactId>javax.annotation-api</artifactId>
+      <version>1.3.2</version>
+    </dependency>    
+    
   </dependencies>
 
   <build>
@@ -248,25 +275,51 @@
         <artifactId>gsp-dba-maven-plugin</artifactId>
         <version>4.4.1</version>
         <configuration>
-          <driver>org.h2.Driver</driver>
-          <url>jdbc:h2:./h2/db/nablarch_example</url>
+          <driver>org.postgresql.Driver</driver>
+          <url>jdbc:postgresql://localhost:5432/postgres</url>
           <adminUser>${db.adminUser}</adminUser>
-          <adminPassword>${db.adminUser}</adminPassword>
+          <adminPassword>${db.adminPassword}</adminPassword>
           <user>${db.user}</user>
           <password>${db.user}</password>
           <schema>PUBLIC</schema>
           <useAccessor>true</useAccessor>
           <rootPackage>com.nablarch.example.app</rootPackage>
           <entityPackageName>entity</entityPackageName>
-          <dataDirectory>src/test/resources/data/h2</dataDirectory>
-          <erdFile>src/main/resources/entity/h2.edm</erdFile>
+          <erdFile>src/main/resources/entity/postgres.edm</erdFile>
+          <dataDirectory>src/test/resources/data/postgres</dataDirectory>
         </configuration>
         <dependencies>
           <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.192</version>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.6.jre6</version>
             <scope>runtime</scope>
+          </dependency>
+          <!-- for java 11 -->
+          <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>javax.activation-api</artifactId>
+            <version>1.2.0</version>
+          </dependency>
+          <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.0</version>
+          </dependency>
+          <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>2.3.0</version>
+          </dependency>
+          <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.3.0</version>
+          </dependency>
+          <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.3.2</version>
           </dependency>
         </dependencies>
         <executions>
